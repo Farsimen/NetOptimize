@@ -16,6 +16,7 @@
 
 
 bash <(curl -s https://raw.githubusercontent.com/Farsimen/NetOptimize/main/netoptimize.sh)
+
 این دستور اسکریپت را دانلود و اجرا می‌کند که منویی جهت مدیریت دارد.
 
 ## راهنما
