@@ -15,7 +15,6 @@
 برای نصب مستقیم روی سرور اوبونتو دستور زیر را اجرا کنید:
 
 
-text
 bash <(curl -s https://raw.githubusercontent.com/Farsimen/NetOptimize/main/netoptimize.sh)
 این دستور اسکریپت را دانلود و اجرا می‌کند که منویی جهت مدیریت دارد.
 
