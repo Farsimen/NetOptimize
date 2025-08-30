@@ -1,48 +1,50 @@
-```
-# NetOptimize / نت‌بهینه‌ساز
+# NetOptimize
 
-A lightweight, user-friendly script for optimizing network performance on Ubuntu servers via Linux Traffic Control (`tc`).
+A lightweight, user-friendly script for optimizing network performance on Ubuntu servers using Traffic Control (tc). This script includes an interactive menu for installation, customization, and cleanup.
 
-اسکریپتی سبک و آسان برای بهینه‌سازی عملکرد شبکه در سرورهای اوبونتو با استفاده از Linux Traffic Control (`tc`).
+اسکریپتی سبک و آسان برای بهینه‌سازی عملکرد شبکه در سرورهای اوبونتو با استفاده از Traffic Control (tc). این اسکریپت شامل منویی تعاملی برای نصب، سفارشی‌سازی و پاک‌سازی است.
 
-## Features / امکانات
-- Auto-detects the main network interface. / شناسایی خودکار اینترفیس اصلی شبکه
-- Applies advanced queue disciplines: CAKE, FQ-CoDel, HTB+Netem. / اعمال صف‌های پیشرفته CAKE، FQ-CoDel و HTB+Netem
-- One-click customization of bandwidth & RTT. / امکان سفارشی‌سازی پهنای باند و RTT
-- Full cleanup / rollback option. / امکان پاک‌سازی کامل و بازگشت به حالت اولیه
-- Installs a cron job to re-apply tweaks after reboot. / نصب کرون جاب برای اجرای خودکار بعد از ریبوت
-- Writes logs to /var/log/tc_smart.log. / ذخیره لاگ‌ها در /var/log/tc_smart.log
+## Key Features / کاربردهای کلیدی
 
-## Quick Install / نصب سریع
+- Automatic detection of the main network interface. / شناسایی خودکار اینترفیس اصلی شبکه.
+- Applies advanced queue disciplines: CAKE, FQ-CoDel, HTB+Netem. / اعمال صف‌های پیشرفته: CAKE, FQ-CoDel, HTB+Netem.
+- Easy customization of bandwidth & RTT. / سفارشی‌سازی آسان پهنای باند و RTT.
+- Full cleanup and rollback options. / گزینه‌های کامل پاک‌سازی و بازگشت به حالت اولیه.
+- Sets cron job to auto-run on reboot. / تنظیم کرون جاب برای اجرای خودکار پس از ریبوت.
+- Logs activities for monitoring. / ثبت لاگ‌ها برای نظارت.
 
-Run the following command as root on your Ubuntu server:
+## Automatic Installation / نصب اتوماتیک
 
-```
+Run the following command in your Ubuntu terminal as root:
+
+```bash
 bash <(curl -s https://raw.githubusercontent.com/Farsimen/NetOptimize/main/netoptimize.sh)
 ```
 
-دستور زیر را به عنوان کاربر root در سرور اوبونتو اجرا کنید:
+دستور زیر را در ترمینال اوبونتو به عنوان root اجرا کنید:
 
-```
+```bash
 bash <(curl -s https://raw.githubusercontent.com/Farsimen/NetOptimize/main/netoptimize.sh)
 ```
 
-## Menu Guide / راهنمای منو
+## Usage / استفاده
 
-| Option / گزینه | Action / عملیات |
-|----------------|-----------------|
-| 1              | Install & apply optimization / نصب و اعمال بهینه‌سازی |
-| 2              | Customize bandwidth & RTT / سفارشی‌سازی پهنای باند و RTT |
-| 3              | Clean all settings / پاک‌سازی همه تنظیمات |
-| 4              | Exit / خروج |
+Follow the menu options: 
+- 1 for install and apply optimization / ۱ برای نصب و اعمال بهینه‌سازی
+- 2 for customize bandwidth and RTT / ۲ برای سفارشی‌سازی پهنای باند و RTT
+- 3 for clean all settings / ۳ برای پاک‌سازی همه تنظیمات
+- 4 to exit / ۴ برای خروج
 
-## Notes / نکات
+To check status, use: `tc qdisc show` and view logs at `/var/log/tc_smart.log`.
 
-- Requires root privileges. / نیاز به دسترسی روت
-- Auto-runs 30s after reboot via cron. / اجرای خودکار بعد از 30 ثانیه از ریبوت با کرون
-- Check logs at /var/log/tc_smart.log for troubleshooting. / برای رفع مشکل لاگ‌ها را در /var/log/tc_smart.log بررسی کنید
+برای چک وضعیت، از `tc qdisc show` استفاده کنید و لاگ‌ها را در `/var/log/tc_smart.log` ببینید.
 
----
+## Warnings / هشدارها
 
-Happy tweaking! / به بهینه‌سازی خوش آمدید! 🚦
-```
+- Review script content before running. / محتوای اسکریپت را قبل از اجرا بررسی کنید.
+- If conflicts with other tools, use cleanup option. / در صورت تداخل با ابزارهای دیگر، از گزینه پاک‌سازی استفاده کنید.
+- Designed for long-term stability. / طراحی شده برای پایداری بلندمدت.
+
+This script is optimized for reliability – good luck! 😊
+
+این اسکریپت برای پایداری بهینه‌سازی شده – موفق باشید! 😊
