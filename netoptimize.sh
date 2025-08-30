@@ -8,13 +8,13 @@ fi
 main_menu() {
     clear
     echo "----- NetOptimize -----"
-    echo "بهینه‌سازی شبکه با tc"
+    echo "Network Optimization with tc"
     echo "-----------------------"
-    echo "1. نصب و اعمال بهینه‌سازی"
-    echo "2. سفارشی‌سازی (تغییر BANDWIDTH/RTT)"
-    echo "3. پاک کردن کامل (حذف همه تنظیمات)"
-    echo "4. خروج"
-    read -p "انتخاب: " choice
+    echo "1. Install and Apply Optimization"
+    echo "2. Customize (Change BANDWIDTH/RTT)"
+    echo "3. Clean All (Remove All Settings)"
+    echo "4. Exit"
+    read -p "Choose: " choice
     case $choice in
         1) install_optimize ;;
         2) customize ;;
@@ -66,17 +66,17 @@ echo "$(date): Network optimization finished." >> "$LOG_FILE"
 EOF
     chmod +x /usr/local/bin/tc_optimize.sh
     (crontab -l 2>/dev/null; echo "@reboot sleep 30 && /usr/local/bin/tc_optimize.sh") | crontab -
-    /usr/local/bin/tc_optimize.sh && echo "بهینه‌سازی اعمال شد"
+    /usr/local/bin/tc_optimize.sh && echo "Optimization applied successfully"
     main_menu
 }
 
 customize() {
     clear
-    read -p "BANDWIDTH جدید (مثل 1000mbit): " new_bandwidth
-    read -p "RTT جدید (مثل 20ms): " new_rtt
+    read -p "New BANDWIDTH (e.g., 1000mbit): " new_bandwidth
+    read -p "New RTT (e.g., 20ms): " new_rtt
     sed -i "s/BANDWIDTH=\".*\"/BANDWIDTH=\"$new_bandwidth\"/g" /usr/local/bin/tc_optimize.sh
     sed -i "s/RTT=\".*\"/RTT=\"$new_rtt\"/g" /usr/local/bin/tc_optimize.sh
-    echo "تنظیمات بروز شد. حالا گزینه 1 رو بزنید."
+    echo "Settings updated. Now select option 1 to apply."
     main_menu
 }
 
@@ -87,7 +87,7 @@ clean_all() {
     crontab -l | grep -v "/usr/local/bin/tc_optimize.sh" | crontab -
     rm /usr/local/bin/tc_optimize.sh 2>/dev/null
     rm /var/log/tc_smart.log 2>/dev/null
-    echo "همه چیز پاک شد."
+    echo "All settings removed successfully."
     main_menu
 }
 
